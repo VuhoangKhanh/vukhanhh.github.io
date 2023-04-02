@@ -2,591 +2,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Shopping-Christmas</title>
+    <title>ShopGuitar</title>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="shop.css">
     <link rel="stylesheet" href="css/reponsive.css">
 </head>
-<style>.animate-fading{width:100%; animation:fading 10s infinite}
-    @keyframes fading{0%{opacity:0}50%{opacity:1}̀̀{opacity:0}}
-    
-    
-    :root{
-      --transition-effect: 0.25s cubic-bezier(.25,-0.59,.82,1.66) .3s;
-    }
-    body{
-      background: #302d2d;
-      transition: var(--transition-effect);
-    }
-    body.dark{
-      background: #111;
-    }
-    #wrapper{
-      display: flex;
-      justify-content: right;
-      align-items: center;
-      min-height: -6vh;
-    }
-    .switch-toggle{
-      width: 90px;
-      height: 50px;
-      appearance: none;
-      background: #83d8ff;
-      border-radius: 26px;
-      position: relative;
-      cursor: pointer;
-      box-shadow: inset 0px 0px 16px rgba(0, 0, 0, .3);
-      transition: var(--transition-effect);
-    }
-    .switch-toggle::before{
-      content: "";
-      width: 44px;
-      height: 44px;
-      position: absolute;
-      top: 3px;
-      left: 3px;
-      background: #efe2bf;
-      border-radius: 50%;
-      box-shadow: 0px 0px 6px rgba(0, 0, 0, .3);
-      transition: var(--transition-effect);
-    
-    }
-    .switch-toggle:checked{
-      background: #749dd6;
-    }
-    .switch-toggle:checked:before{
-      left: 40px;
-    }
-    
-    
-    
-    .img-prd{
-      height: 53%;
-    }
-    
-    * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-        font-family: 'Muli', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-      }
-    
-      div .main-product{
-        border: solid;
-        border-radius: 25px;
-        padding: 20px;
-      }
-    
-        div .img-prd{
-            border-radius: 39px;
-         }
-      
-      li {
-        list-style: none;
-      }
-      
-     
-      nav {
-        padding: 15px;
-        width: 100%;
-        display: flex;
-       
-      }
-      
-      
-      nav .content-nav {
-        display: flex;
-        line-height: 2rem;
-        flex-direction: row;
-        justify-content: flex-end;
-        width: 60%;
-      }
-      
-      nav .content-nav ul {
-        display: flex;
-      }
-      
-      nav .content-nav ul li a {
-        text-decoration: none;
-        color: #bbbbbb;
-        text-transform: uppercase;
-        padding: 0 15px;
-        font-weight: 800;
-        border: solid;
-        border-radius: 30px;
-        background: rgb(26, 25, 25);
-      }
-      
-      nav .content-nav ul li a:hover {
-        color: #fff;
-      }
-       
-      .content-nav form {
-        position: relative;
-      }
-      
-      .content-nav form input {
-        border: none;
-        background: #fff;
-        padding: 7px;
-        outline: none;
-        border-radius: 12px;
-      }
-      
-      .content-nav form button {
-        padding: 5px;
-        border-radius: 12px;
-        position: absolute;
-        right: 0;
-        top: 2px;
-        border: none;
-        outline: none;
-        background: #fff;
-      }
-      
-    
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        padding-top: 100px;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgb(0, 0, 0);
-        background-color: rgba(0, 0, 0, 0.4);
-      }
-      
-      .modal-content {
-        margin: 0 auto;
-        width: 50%;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        background-color: #fff;
-        background-clip: padding-box;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        border-radius: .3rem;
-        outline: 0;
-      
-      }
-      
-      .modal-body {
-        padding: 1rem;
-      }
-      
-      .modal-footer {
-        display: flex;
-        border-top: 1px solid #aaaaaa;
-        padding: 1rem;
-        flex-direction: row;
-        justify-content: flex-end;
-        border-top: 1px solid #aaaaaa;
-        padding: 1rem;
-      }
-      
-      .modal-footer>:not(:first-child) {
-        margin-left: .25rem;
-      }
-      
-      .btn {
-        cursor: pointer;
-        outline: none;
-        font-weight: 400;
-        line-height: 1.25;
-        text-align: center;
-        white-space: nowrap;
-        vertical-align: middle;
-        border: 1px solid transparent;
-        padding: .5rem 1rem;
-        font-size: 1rem;
-        border-radius: .25rem;
-        transition: all .2s ease-in-out;
-      }
-      
-      .btn-secondary {
-        color: #292b2c;
-        background-color: #fff;
-        border-color: #ccc;
-      }
-      
-      .btn-primary {
-        color: #fff;
-        background-color: #0275d8;
-        border-color: #0275d8;
-      }
-      
-      .modal-header {
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-        border-bottom: 1px solid #aaaaaa;
-        padding: 1rem;
-      }
-      
-      h5.modal-title {
-        font-size: 1.5rem;
-      }
-      
-      .close {
-        color: #aaaaaa;
-        font-size: 28px;
-        font-weight: bold;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-      }
-      
-      .close:hover,
-      .close:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-      }
-      
-      #cart {
-        font-size: 15px;
-        color: #fff;
-        background: #c7b200;
-        border: 1px solid transparent;
-        border-radius: 10px;
-        outline: none;
-        margin-left: 1rem;
-        padding: 12px;
-        cursor: pointer;
-      }
-      
-      
-      #cart:hover {
-        border-color: #fff;
-      }
-      .wrapper {
-        padding: 2rem;
-      }
-      
-      .products ul {
-        display: inline-block;
-      }
-      
-      .products ul .main-product {
-        margin-bottom: 2rem;
-        margin-right: 1rem;
-        display: block;
-        float: left;
-        width: 24%;
-      }
-      
-      .products ul .no-margin {
-        margin-right: 0;
-      }
-      
-      .products ul .img-product img {
-        width: 100%;
-      }
-      
-      .content-product .content-product-h3 {
-        padding: .5rem 0;
-        overflow: hidden;
-        color: rgb(134, 76, 76);
-        font-weight: 500;
-        font-size: 16px;
-        max-height: 50px;
-        min-height: 50px;
-        text-align: center;
-        line-height: 19px;
-        margin: 0 0 5px;
-      }
-      
-      .content-product .content-product-deltals {
-        display: flex;
-        justify-content: center;
-        padding-top: 1rem;
-      }
-      
-      .main-product .content-product .content-product-deltals .price {
-        color: #c7b200;
-        font-weight: 700;
-        margin-right: 1rem;
-        vertical-align: middle;
-        font-size: 20px;
-        border-radius: 20%;
-      }
-      
-      .content-product .content-product-deltals .price .money {
-        vertical-align: middle;
-      }
-      
-      .content-product .content-product-deltals .btn-cart {
-        background: #f1df11;
-        border-radius: 5px;
-        color: #fff;
-        font-weight: 500;
-      }
-      
-      .content-product .content-product-deltals .btn-cart:hover {
-        background: #c7b200;
-      }
-      
-      
-      .footer-item {
-        padding: .5rem 2rem;
-        background: #f1df11;
-        display: flex;
-      
-      }
-      
-      .footer-item .img-footer {
-        align-items: center;
-        display: flex;
-      }
-      
-      .footer-item .img-footer img {
-        width: 100%;
-      }
-      
-      .footer-item .social-footer {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        justify-content: flex-end;
-      }
-      
-      .footer-item .social-footer li a {
-        color: #000000;
-        font-size: 2rem;
-      }
-      
-      .footer-item .social-footer li:last-child {
-        margin-left: .5rem;
-      }
-      .footer-item {
-        padding: .5rem 2rem;
-        background: #f1df11;
-        display: flex;
-      
-      }
-      
-      .footer-item .img-footer {
-        align-items: center;
-        display: flex;
-      }
-      
-      .footer-item .img-footer img {
-        width: 100%;
-      }
-      
-      .footer-item .social-footer {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        justify-content: flex-end;
-      }
-      
-      .footer-item .social-footer li a {
-        color: #000000;
-        font-size: 2rem;
-      }
-      
-      .footer-item .social-footer li:last-child {
-        margin-left: .5rem;
-      }
-    
-      .cart-header {
-        font-weight: bold;
-        font-size: 1.25em;
-        color: #333;
-      }
-      
-      .cart-column {
-        display: flex;
-        align-items: center;
-        border-bottom: 1px solid black;
-        margin-right: 1.5em;
-        padding-bottom: 10px;
-        margin-top: 10px;
-      }
-      
-      .cart-row {
-        display: flex;
-      }
-      
-      .cart-item {
-        width: 45%;
-      }
-      
-      .cart-price {
-        width: 20%;
-        font-size: 1.2em;
-        color: #333;
-      }
-      
-      .cart-quantity {
-        width: 35%;
-      }
-      
-      .cart-item-title {
-        color: #333;
-        margin-left: .5em;
-        font-size: 1.2em;
-      }
-      
-      .cart-item-image {
-        width: 75px;
-        height: auto;
-        border-radius: 10px;
-      }
-      
-      .btn-danger {
-        color: white;
-        background-color: #EB5757;
-        border: none;
-        border-radius: .3em;
-        font-weight: bold;
-      }
-      
-      .btn-danger:hover {
-        background-color: #CC4C4C;
-      }
-      
-      .cart-quantity-input {
-        height: 34px;
-        width: 50px;
-        border-radius: 5px;
-        border: 1px solid #56CCF2;
-        background-color: #eee;
-        color: #333;
-        padding: 0;
-        text-align: center;
-        font-size: 1.2em;
-        margin-right: 25px;
-      }
-      
-      .cart-row:last-child {
-        border-bottom: 1px solid black;
-      }
-      
-      .cart-row:last-child .cart-column {
-        border: none;
-      }
-      
-      .cart-total {
-        text-align: end;
-        margin-top: 10px;
-        margin-right: 10px;
-      }
-      
-      .cart-total-title {
-        font-weight: bold;
-        font-size: 1.5em;
-        color: black;
-        margin-right: 20px;
-      }
-      
-      .cart-total-price {
-        color: #333;
-        font-size: 1.1em;
-      }
-    
-    
-      .cart-header {
-        font-weight: bold;
-        font-size: 1.25em;
-        color: #333;
-      }
-      
-      .cart-column {
-        display: flex;
-        align-items: center;
-        border-bottom: 1px solid black;
-        margin-right: 1.5em;
-        padding-bottom: 10px;
-        margin-top: 10px;
-      }
-      
-      .cart-row {
-        display: flex;
-      }
-      
-      .cart-item {
-        width: 45%;
-      }
-      
-      .cart-price {
-        width: 20%;
-        font-size: 1.2em;
-        color: #333;
-      }
-      
-      .cart-quantity {
-        width: 35%;
-      }
-      
-      .cart-item-title {
-        color: #333;
-        margin-left: .5em;
-        font-size: 1.2em;
-      }
-      
-      .cart-item-image {
-        width: 75px;
-        height: auto;
-        border-radius: 10px;
-      }
-      
-      .btn-danger {
-        color: white;
-        background-color: #EB5757;
-        border: none;
-        border-radius: .3em;
-        font-weight: bold;
-      }
-      
-      .btn-danger:hover {
-        background-color: #CC4C4C;
-      }
-      
-      .cart-quantity-input {
-        height: 34px;
-        width: 50px;
-        border-radius: 5px;
-        border: 1px solid #56CCF2;
-        background-color: #eee;
-        color: #333;
-        padding: 0;
-        text-align: center;
-        font-size: 1.2em;
-        margin-right: 25px;
-      }
-      
-      .cart-row:last-child {
-        border-bottom: 1px solid black;
-      }
-      
-      .cart-row:last-child .cart-column {
-        border: none;
-      }
-      
-      .cart-total {
-        text-align: end;
-        margin-top: 10px;
-        margin-right: 10px;
-      }
-      
-      .cart-total-title {
-        font-weight: bold;
-        font-size: 1.5em;
-        color: black;
-        margin-right: 20px;
-      }
-      
-      .cart-total-price {
-        color: #333;
-        font-size: 1.1em;
-      }
-    
-      </style>
+
 <body class="">
     <script src="shop2.js"></script>
     
@@ -595,7 +16,7 @@
         <nav>
             
             <div class="img-nav">
-                <img class="nav" src="https://th.bing.com/th/id/R.31e7d1a8963fcd8ccc37688d723e07ce?rik=7ZFneqQf3QUlmg&pid=ImgRaw&r=0" alt="" height="70px" width="70px">
+                <img class="nav" src="https://th.bing.com/th/id/R.31e7d1a8963fcd8ccc37688d723e07ce?rik=7ZFneqQf3QUlmg&pid=ImgRaw&r=0" alt="" height="40px" width="60px">
             </div>
             <div class="content-nav">
                 <ul>
@@ -604,7 +25,7 @@
                     <li><a href="#">Sản Phẩm</a></li>
                     <li><a href="#">Liên Hệ</a></li>
                     <li><a href="#">Giới Thiệu</a></li>
-                    <li style="float:right"><a class="active" href="http://127.0.0.1:5500/HomeWork/index.html">Đăng nhập</a></li>
+                    <li style="float:right"><a class="active" href="Login.html">Đăng nhập</a></li>
                 </ul>
                 <form>
                     <input type="text" name="search" placeholder="Tìm kiếm sản phẩm...">
@@ -724,13 +145,14 @@
                 </li>
                 <li class="main-product">
                     <div class="img-product">
-                        <img class="img-prd" src="https://shopguitarcaugiay.com/components/com_jshopping/files/img_products/victor-v102_2310010a2ec641b0bb89dc020e3f30e5_grande.jpg" alt="" width="" height="53%">
+                        <img class="img-prd" src="https://shopguitarcaugiay.com/components/com_jshopping/files/img_products/69913565_376845613207088_1425841250061254656_n.jpg" alt="" width="" height="53%">
                     </div>
                     <div class="content-product">
-                        <h3 class="content-product-h3">ĐÀN PIANO CƠ VICTORIA GIÁ RẺ</h3>
+                        <h3 class="content-product-h3">ĐÀN GUITAR ACOUSTIC
+                        </h3>
                         <div class="content-product-deltals">
                             <div class="price">
-                                <span class="money">22.000.000đ</span>
+                                <span class="money">2.000.000đ</span>
                             </div>
                             <button type="button" class="btn btn-cart">Mua Ngay</button>
                         </div>
@@ -808,25 +230,127 @@
                         </div>
                     </div>
                 </li>
-                <li class="main-product">
-                    <div class="img-product">
-                        <img class="img-prd" src="https://shopguitarcaugiay.com/components/com_jshopping/files/img_products/67330588_213100122942614_5304102564076191744_n.jpg" alt="">
-                    </div>
-                    <div class="content-product">
-                        <h3 class="content-product-h3">ĐÀN GUITAR CLASSIC SQUIER - MÀU ĐEN
-                        </h3>
-                        <div class="content-product-deltals">
-                            <div class="price">
-                                <span class="money">1.200.000đ</span>
-                            </div>
-                            <button type="button" class="btn btn-cart">Mua Ngay</button>
-                        </div>
-                    </div>
-                </li>
+                
                          
                 
-                           
+                <p class="p">--------Phụ kiện Guitar--------</p> 
+                <li class="main-product no-margin">
+                  <div class="img-product">
+                      <img class="img-prd" src="https://shopguitarcaugiay.com/components/com_jshopping/files/img_products/18767556_1609783855700027_6656226198777360858_n.jpg" alt="" height="53%">
+                  </div>
+                  <div class="content-product">
+                      <h3 class="content-product-h3">CAPO TUNER MEIDEAL</h3>
+                      <div class="content-product-deltals">
+                          <div class="price">
+                              <span class="money">250.000đ</span>
+                          </div>
+                          <button type="button" class="btn btn-cart">Mua Ngay</button>
+                      </div>
+                  </div>
+              </li>
+              <li class="main-product no-margin">
+                <div class="img-product">
+                    <img class="img-prd" src="https://shopguitarcaugiay.com/components/com_jshopping/files/img_products/Mong-gay-dan-guitar.jpg" alt="" height="53%">
+                </div>
+                <div class="content-product">
+                    <h3 class="content-product-h3">MÓNG GẢY ĐÀN GUITAR</h3>
+                    <div class="content-product-deltals">
+                        <div class="price">
+                            <span class="money">15.000đ</span>
+                        </div>
+                        <button type="button" class="btn btn-cart">Mua Ngay</button>
+                    </div>
+                </div>
+            </li>
+            <li class="main-product no-margin">
+              <div class="img-product">
+                  <img class="img-prd" src="https://shopguitarcaugiay.com/components/com_jshopping/files/img_products/Chot-deo-day-dan-Guitar.jpg" alt="" height="53%">
+              </div>
+              <div class="content-product">
+                  <h3 class="content-product-h3">CHỐT ĐEO DÂY ĐÀN GUITAR</h3>
+                  <div class="content-product-deltals">
+                      <div class="price">
+                          <span class="money">30.000đ</span>
+                      </div>
+                      <button type="button" class="btn btn-cart">Mua Ngay</button>
+                  </div>
+              </div>
+          </li>
+          <li class="main-product no-margin">
+            <div class="img-product">
+                <img class="img-prd" src="https://shopguitarcaugiay.com/components/com_jshopping/files/img_products/day-acoustic-mau.jpg" alt="" height="53%">
+            </div>
+            <div class="content-product">
+                <h3 class="content-product-h3">DÂY ACOUSTIC NHIỀU MÀU</h3>
+                <div class="content-product-deltals">
+                    <div class="price">
+                        <span class="money">70.000đ</span>
+                    </div>
+                    <button type="button" class="btn btn-cart">Mua Ngay</button>
+                </div>
+            </div>
+        </li>
+        <li class="main-product no-margin">
+          <div class="img-product">
+              <img class="img-prd" src="https://shopguitarcaugiay.com/components/com_jshopping/files/img_products/16807668_1489891207689293_4833298614140500140_n.jpg" alt="" height="53%">
+          </div>
+          <div class="content-product">
+              <h3 class="content-product-h3">BỘ NỐT NHẠC DÁN CẦN GUITAR
+              </h3>
+              <div class="content-product-deltals">
+                  <div class="price">
+                      <span class="money">60.000đ</span>
+                  </div>
+                  <button type="button" class="btn btn-cart">Mua Ngay</button>
+              </div>
+          </div>
+      </li>
+      <li class="main-product no-margin">
+        <div class="img-product">
+            <img class="img-prd" src="https://shopguitarcaugiay.com/components/com_jshopping/files/img_products/5pcs-lot-ALaska-New-Thumb-Finger-font-b-Picks-b-font-Plectrums-Sets-Guitar-Rings-font.jpg" alt="" height="53%">
+        </div>
+        <div class="content-product">
+            <h3 class="content-product-h3">THUMPICK GUITAR</h3>
+            <div class="content-product-deltals">
+                <div class="price">
+                    <span class="money">20.000đ</span>
+                </div>
+                <button type="button" class="btn btn-cart">Mua Ngay</button>
+            </div>
+        </div>
+    </li>
+    <li class="main-product no-margin">
+      <div class="img-product">
+          <img class="img-prd" src="https://shopguitarcaugiay.com/components/com_jshopping/files/img_products/67876716_2421648787923284_7626903542988537856_n.jpg" alt="" height="53%">
+      </div>
+      <div class="content-product">
+          <h3 class="content-product-h3">DÂY LINE ĐÀN GUITAR CHẤT LƯỢNG CAO</h3>
+          <div class="content-product-deltals">
+              <div class="price">
+                  <span class="money">150.000đ</span>
+              </div>
+              <button type="button" class="btn btn-cart">Mua Ngay</button>
+          </div>
+      </div>
+  </li>    
+  <li class="main-product no-margin">
+    <div class="img-product">
+        <img class="img-prd" src="https://th.bing.com/th/id/OIP.ibG9sOe8jXD2-fdkrCe_ewHaHa?pid=ImgDet&rs=1" alt="" height="53%">
+    </div>
+    <div class="content-product">
+        <h3 class="content-product-h3">DÂY LINE ĐÀN GUITAR CHẤT LƯỢNG CAO</h3>
+        <div class="content-product-deltals">
+            <div class="price">
+                <span class="money">150.000đ</span>
+            </div>
+            <button type="button" class="btn btn-cart">Mua Ngay</button>
+        </div>
+    </div>
+</li>    
+   
+  <p class="p"></p>      
     </ul></div></section>
+    
     <footer>
         <div class="footer-item">
             <div class="img-footer">
